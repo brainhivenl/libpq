@@ -3,6 +3,21 @@ exports_files(
     visibility = ["//visibility:public"],
 )
 
+genrule(
+    name = "pg_config",
+    srcs = [
+        "@postgres//:pg_config.linux.h",
+        "@postgres//:pg_config.macos.h",
+    ],
+    outs = ["pg_config.h"],
+    cmd = select({
+        "@platforms//os:osx": "cp $(location @postgres//:pg_config.macos.h) $@",
+        "@platforms//os:linux": "cp $(location @postgres//:pg_config.linux.h) $@",
+        "//conditions:default": "@platforms//:incompatible",
+    }),
+    visibility = ["//visibility:public"],
+)
+
 cc_library(
     name = "headers",
     srcs = glob([
@@ -26,6 +41,7 @@ alias(
 cc_library(
     name = "pq",
     srcs = [
+        ":pg_config",
         "@postgres//:src/interfaces/libpq/fe-auth.c",
         "@postgres//:src/interfaces/libpq/fe-auth-scram.c",
         "@postgres//:src/interfaces/libpq/fe-connect.c",

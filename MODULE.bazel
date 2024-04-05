@@ -1,5 +1,7 @@
 module(name = "libpq", version = "0.0.1")
 
+bazel_dep(name = "platforms", version = "0.0.9")
+
 http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 http_archive(
     name = "postgres",
@@ -8,9 +10,10 @@ http_archive(
     url = "https://ftp.postgresql.org/pub/source/v16.2/postgresql-16.2.tar.gz",
     sha256 = "2b8201047ec81acd1bad29dba278d788e7891b9c3e8232eda16bb29dec8131c7",
     patches = [
-        ":pg_config.h",
         ":pg_config_os.h",
         ":pg_config_paths.h",
         ":pg_config_ext.h",
+        ":pg_config.macos.h",
+        ":pg_config.linux.h",
     ],
 )
