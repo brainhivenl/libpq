@@ -57,6 +57,7 @@ cc_library(
         "@postgres//:src/interfaces/libpq/libpq-events.c",
         "@postgres//:src/interfaces/libpq/pqexpbuffer.c",
     ],
+    hdrs = ["@postgres//:src/interfaces/libpq/libpq-fe.h"],
     linkstatic = True,
     visibility = ["//visibility:public"],
     deps = ["@postgres//:headers"],
