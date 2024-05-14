@@ -4,7 +4,7 @@
   "flags": {
     "cmdRegistries": [
       "https://bcr.bazel.build",
-      "https://raw.githubusercontent.com/brainhivenl/bazel-registry/9a78178e483d340a1ee3bf6918d2096e7bf63db5/"
+      "https://raw.githubusercontent.com/brainhivenl/bazel-registry/41a91904a9e87c9cee6d6a46d37cb05a133baf23/"
     ],
     "cmdModuleOverrides": {},
     "allowedYankedVersions": [],

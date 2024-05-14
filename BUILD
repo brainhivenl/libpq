@@ -96,6 +96,7 @@ cc_library(
         "HAVE_STRERROR_R",
         "STRERROR_R_INT",
     ],
+    hdrs = ["@postgres//:src/interfaces/libpq/libpq-fe.h"],
     linkstatic = True,
     visibility = ["//visibility:public"],
     deps = ["@postgres//:headers"],
