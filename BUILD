@@ -18,22 +18,6 @@ genrule(
     visibility = ["//visibility:public"],
 )
 
-cc_library(
-    name = "headers",
-    srcs = glob([
-        "src/common/**/*.h",
-        "src/include/**/*.h",
-        "src/interfaces/libpq/*.h",
-    ]) + ["src/port/pg_config_paths.h"],
-    includes = [
-        "src/common",
-        "src/include",
-        "src/interfaces/libpq",
-        "src/port",
-    ],
-    visibility = ["//visibility:public"],
-)
-
 alias(
     name = "libpq",
     actual = ":pq",
